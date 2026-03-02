@@ -4,7 +4,7 @@ async function generateResponse(prompt) {
     try {
         console.log("Initializing GPT-4All...");
 
-        const gpt4all = new GPT4All("gpt4all-lora-quantized"); // Ensure correct model name
+        const gpt4all = new GPT4All("gpt4all-lora-quantized"); 
         await gpt4all.init();
         await gpt4all.open();
 
