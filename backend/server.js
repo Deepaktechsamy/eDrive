@@ -1,3 +1,4 @@
+require("dotenv").config();
 const express = require("express");
 const cors = require("cors");
 const bodyParser = require("body-parser");
@@ -16,11 +17,11 @@ const attendanceRoutes = require("./attendance");
 
 
 
-const { generateResponse } = require("./gpt4all"); // ✅ Import GPT-4All function
+const { generateResponse } = require("./gemini"); // ✅ Import Gemini function
 
-  // Load environment variables
-     // Enable CORS
- // Express framework
+// Load environment variables
+// Enable CORS
+// Express framework
 
 
 
@@ -68,7 +69,7 @@ app.use("/api/attendance", attendanceRoutes);
 // ✅ API route for GPT-4All
 app.post("/api/chat", async (req, res) => {
     const { prompt } = req.body;
-    
+
     if (!prompt) {
         return res.status(400).json({ error: "Prompt is required." });
     }
@@ -115,11 +116,11 @@ const upload = multer({
 });
 
 // MongoDB Connection
-mongoose.connect("mongodb://localhost:27017/mydb", {
+mongoose.connect("mongodb+srv://deepaktechsol_db_user:mpdXffqoRBJbSrLt@e-commerce.q19obtt.mongodb.net/?appName=e-commerce", {
     useNewUrlParser: true,
     useUnifiedTopology: true
 }).then(() => console.log("Connected to MongoDB"))
-.catch(err => console.log("Error connecting to MongoDB: ", err));
+    .catch(err => console.log("Error connecting to MongoDB: ", err));
 
 // User Schema
 const userSchema = new mongoose.Schema({
