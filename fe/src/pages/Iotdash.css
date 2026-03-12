@@ -1,0 +1,120 @@
+.dashboard-container {
+    max-width: 900px;
+    margin: auto;
+    padding: 20px;
+    text-align: center;
+    background: #f8f9fa;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+    font-size: 28px;
+    color: #2c3e50;
+    margin-bottom: 10px;
+}
+
+.greeting-message {
+    font-size: 18px;
+    color: #7f8c8d;
+    margin-bottom: 20px;
+}
+
+.upload-form {
+    background: #ecf0f1;
+    padding: 15px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.upload-form h3 {
+    font-size: 20px;
+    color: #34495e;
+    margin-bottom: 10px;
+}
+
+input[type="file"] {
+    margin-bottom: 10px;
+    padding: 5px;
+}
+
+.upload-btn {
+    background: #27ae60;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background 0.3s ease;
+}
+
+.upload-btn:hover {
+    background: #219150;
+}
+
+.file-cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+}
+
+.file-card {
+    background: white;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 180px;
+    transition: transform 0.3s ease;
+}
+
+.file-card:hover {
+    transform: scale(1.05);
+}
+
+.file-logo {
+    margin-bottom: 10px;
+}
+
+.view-link {
+    color: #2980b9;
+    text-decoration: none;
+    font-size: 14px;
+    word-wrap: break-word;
+}
+
+.file-actions {
+    display: flex;
+    gap: 8px;
+    margin-top: 10px;
+}
+
+.download-btn,
+.delete-btn {
+    background: #3498db;
+    color: white;
+    border: none;
+    padding: 8px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background 0.3s ease;
+}
+
+.download-btn:hover {
+    background: #2980b9;
+}
+
+.delete-btn {
+    background: #e74c3c;
+}
+
+.delete-btn:hover {
+    background: #c0392b;
+}
