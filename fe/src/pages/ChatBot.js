@@ -11,7 +11,7 @@ const ChatBot = () => {
         if (!prompt) return alert("Enter a message!");
         setLoading(true);
         try {
-            const res = await axios.post("http://localhost:5000/api/chat", { prompt });
+            const res = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/chat`, { prompt });
             setResponse(res.data.response);
         } catch (error) {
             console.error("Error:", error);

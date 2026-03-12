@@ -18,7 +18,7 @@ const Blogs = () => {
 
     const fetchBlogs = async () => {
         try {
-            const response = await axios.get("http://localhost:5000/api/blog/");
+            const response = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/api/blog/`);
             setBlogs(response.data);
         } catch (error) {
             console.error("Error fetching blogs:", error);
@@ -43,7 +43,7 @@ const Blogs = () => {
         data.append("image", formData.image);
 
         try {
-            await axios.post("http://localhost:5000/api/blog/create", data, {
+            await axios.post("${process.env.REACT_APP_BACKEND_URL}/api/blog/create", data, {
                 headers: { "Content-Type": "multipart/form-data" }
             });
             alert("Blog posted successfully!");
@@ -96,7 +96,7 @@ const Blogs = () => {
                     blogs.map((blog) => (
                         <div key={blog._id} className="col-md-4 mb-4">
                             <div className="card">
-                                <img src={`http://localhost:5000/bloguploads/${blog.image}`} className="card-img-top" alt="Blog" />
+                                <img src={`${process.env.REACT_APP_BACKEND_URL}/bloguploads/${blog.image}`} className="card-img-top" alt="Blog" />
                                 <div className="card-body">
                                     <h5 className="card-title">{blog.title}</h5>
                                     <p className="card-text">{blog.content.substring(0, 100)}...</p>

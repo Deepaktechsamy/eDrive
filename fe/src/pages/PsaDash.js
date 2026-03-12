@@ -39,7 +39,7 @@ const PsaDash = () => {
 
         try {
             const token = localStorage.getItem("token");
-            await axios.post("http://localhost:5000/api/psa/upload", formData, {
+            await axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/psa/upload`, formData, {
                 headers: {
                     "Authorization": `Bearer ${token}`,
                     "Content-Type": "multipart/form-data",
@@ -58,7 +58,7 @@ const PsaDash = () => {
     const fetchFiles = async () => {
         try {
             const token = localStorage.getItem("token");
-            const response = await axios.get("http://localhost:5000/api/psa/files", {
+            const response = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/api/psa/files`, {
                 headers: { "Authorization": `Bearer ${token}` },
             });
             setFiles(response.data);
@@ -70,7 +70,7 @@ const PsaDash = () => {
     const handleDeleteFile = async (fileName) => {
         try {
             const token = localStorage.getItem("token");
-            await axios.delete(`http://localhost:5000/api/psa/delete/${encodeURIComponent(fileName)}`, {
+            await axios.delete(`${process.env.REACT_APP_BACKEND_URL}/api/psa/delete/${encodeURIComponent(fileName)}`, {
                 headers: { "Authorization": `Bearer ${token}` },
             });
 
@@ -84,7 +84,7 @@ const PsaDash = () => {
 
     const handleDownloadFile = (fileName) => {
         const link = document.createElement("a");
-        link.href = `http://localhost:5000/psa_uploads/${fileName}`;
+        link.href = `${process.env.REACT_APP_BACKEND_URL}/psa_uploads/${fileName}`;
         link.download = fileName;
         link.click();
     };

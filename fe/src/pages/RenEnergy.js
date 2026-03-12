@@ -39,7 +39,7 @@ const RenEnergyDash = () => {
 
         try {
             const token = localStorage.getItem("token");
-            await axios.post("http://localhost:5000/api/renenergy/upload", formData, {
+            await axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/renenergy/upload`, formData, {
                 headers: {
                     "Authorization": `Bearer ${token}`,
                     "Content-Type": "multipart/form-data",
@@ -58,7 +58,7 @@ const RenEnergyDash = () => {
     const fetchFiles = async () => {
         try {
             const token = localStorage.getItem("token");
-            const response = await axios.get("http://localhost:5000/api/renenergy/files", {
+            const response = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/api/renenergy/files`, {
                 headers: { "Authorization": `Bearer ${token}` },
             });
             setFiles(response.data);
@@ -70,7 +70,7 @@ const RenEnergyDash = () => {
     const handleDeleteFile = async (fileName) => {
         try {
             const token = localStorage.getItem("token");
-            await axios.delete(`http://localhost:5000/api/renenergy/delete/${encodeURIComponent(fileName)}`, {
+            await axios.delete(`${process.env.REACT_APP_BACKEND_URL}/api/renenergy/delete/${encodeURIComponent(fileName)}`, {
                 headers: { "Authorization": `Bearer ${token}` },
             });
 
@@ -84,7 +84,7 @@ const RenEnergyDash = () => {
 
     const handleDownloadFile = (fileName) => {
         const link = document.createElement("a");
-        link.href = `http://localhost:5000/renenergy_uploads/${fileName}`;
+        link.href = `${process.env.REACT_APP_BACKEND_URL}/renenergy_uploads/${fileName}`;
         link.download = fileName;
         link.click();
     };

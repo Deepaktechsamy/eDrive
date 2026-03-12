@@ -39,7 +39,7 @@ const SemDash = () => {
 
         try {
             const token = localStorage.getItem("token");
-            await axios.post("http://localhost:5000/api/sem/upload", formData, {
+            await axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/sem/upload`, formData, {
                 headers: {
                     "Authorization": `Bearer ${token}`,
                     "Content-Type": "multipart/form-data",
@@ -58,7 +58,7 @@ const SemDash = () => {
     const fetchFiles = async () => {
         try {
             const token = localStorage.getItem("token");
-            const response = await axios.get("http://localhost:5000/api/sem/files", {
+            const response = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/api/sem/files`, {
                 headers: { "Authorization": `Bearer ${token}` },
             });
             setFiles(response.data);
@@ -70,7 +70,7 @@ const SemDash = () => {
     const handleDeleteFile = async (fileName) => {
         try {
             const token = localStorage.getItem("token");
-            await axios.delete(`http://localhost:5000/api/sem/delete/${encodeURIComponent(fileName)}`, {
+            await axios.delete(`${process.env.REACT_APP_BACKEND_URL}/api/sem/delete/${encodeURIComponent(fileName)}`, {
                 headers: { "Authorization": `Bearer ${token}` },
             });
 
@@ -84,7 +84,7 @@ const SemDash = () => {
 
     const handleDownloadFile = (fileName) => {
         const link = document.createElement("a");
-        link.href = `http://localhost:5000/sem_uploads/${fileName}`;
+        link.href = `${process.env.REACT_APP_BACKEND_URL}/sem_uploads/${fileName}`;
         link.download = fileName;
         link.click();
     };

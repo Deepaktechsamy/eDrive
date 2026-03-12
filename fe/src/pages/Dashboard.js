@@ -39,7 +39,7 @@ const Dashboard = () => {
 
         try {
             const token = localStorage.getItem("token");
-            await axios.post("http://localhost:5000/api/upload", formData, {
+            await axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/upload`, formData, {
                 headers: {
                     "Authorization": `Bearer ${token}`,
                     "Content-Type": "multipart/form-data",
@@ -58,7 +58,7 @@ const Dashboard = () => {
     const fetchFiles = async () => {
         try {
             const token = localStorage.getItem("token");
-            const response = await axios.get("http://localhost:5000/api/files", {
+            const response = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/api/files`, {
                 headers: { "Authorization": `Bearer ${token}` },
             });
             setFiles(response.data);
@@ -70,7 +70,7 @@ const Dashboard = () => {
     const handleDeleteFile = async (fileName) => {
         try {
             const token = localStorage.getItem("token");
-            await axios.delete(`http://localhost:5000/api/delete-file/${encodeURIComponent(fileName)}`, {
+            await axios.delete(`${process.env.REACT_APP_BACKEND_URL}/api/delete-file/${encodeURIComponent(fileName)}`, {
                 headers: { "Authorization": `Bearer ${token}` },
             });
 
@@ -84,7 +84,7 @@ const Dashboard = () => {
 
     const handleDownloadFile = (fileName) => {
         const link = document.createElement("a");
-        link.href = `http://localhost:5000/uploads/${fileName}`;
+        link.href = `${process.env.REACT_APP_BACKEND_URL}/uploads/${fileName}`;
         link.download = fileName;
         link.click();
     };

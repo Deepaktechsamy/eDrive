@@ -40,7 +40,7 @@ const Attendance = () => {
     const fetchAttendance = async () => {
         try {
             const token = localStorage.getItem("token");
-            const response = await axios.get("http://localhost:5000/api/attendance/", {
+            const response = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/api/attendance/`, {
                 headers: { Authorization: `Bearer ${token}` }
             });
             setStudents(response.data);
@@ -62,12 +62,12 @@ const Attendance = () => {
             const token = localStorage.getItem("token");
 
             if (editingStudent) {
-                await axios.put(`http://localhost:5000/api/attendance/${editingStudent._id}`, formData, {
+                await axios.put(`${process.env.REACT_APP_BACKEND_URL}/api/attendance/${editingStudent._id}`, formData, {
                     headers: { Authorization: `Bearer ${token}` }
                 });
                 alert("Attendance updated successfully!");
             } else {
-                await axios.post("http://localhost:5000/api/attendance/mark", formData, {
+                await axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/attendance/mark`, formData, {
                     headers: { Authorization: `Bearer ${token}` }
                 });
                 alert("Attendance marked successfully!");
@@ -89,7 +89,7 @@ const Attendance = () => {
     const handleDelete = async (id) => {
         try {
             const token = localStorage.getItem("token");
-            await axios.delete(`http://localhost:5000/api/attendance/${id}`, {
+            await axios.delete(`${process.env.REACT_APP_BACKEND_URL}/api/attendance/${id}`, {
                 headers: { Authorization: `Bearer ${token}` }
             });
             alert("Attendance record deleted!");
